@@ -5,7 +5,7 @@ import com.shoes.api.model.User;
 
 public interface UserMapper {
 
-    public UserDTO convertEntity2Dto(User user);
+    UserDTO convertEntity2Dto(User user);
 
-    public User convertDto2Entity(UserDTO dto);
+    User convertDto2Entity(UserDTO dto);
 }
