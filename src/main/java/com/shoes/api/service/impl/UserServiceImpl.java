@@ -5,7 +5,6 @@ import com.shoes.api.dto.UserDTO;
 import com.shoes.api.mapper.UserMapper;
 import com.shoes.api.model.User;
 import com.shoes.api.service.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,7 +38,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     public List<UserDTO> findAll() {
         List<UserDTO> list = new ArrayList<>();
-        List<User> users = userDao.findAll();
+        List<User> users = userDao.findByActive(true);
         if (users != null && !users.isEmpty()) {
             users.forEach(item -> {
                 list.add(userMapper.convertEntity2Dto(item));

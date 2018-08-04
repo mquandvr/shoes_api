@@ -2,6 +2,7 @@ package com.shoes.api.controller;
 
 import com.shoes.api.dto.UserDTO;
 import com.shoes.api.service.UserService;
+import com.shoes.api.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -23,10 +24,15 @@ public class UserController {
         return userService.save(dto);
     }
 
-    @RequestMapping(value = "/users/user/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/users/user", method = RequestMethod.PUT)
+    public UserDTO update(@RequestBody UserDTO dto) {
+        return userService.save(dto);
+    }
+
+    @RequestMapping(value = "/users/user/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value = "id") Long id) {
         userService.delete(id);
-        return "success";
+        return Constants.SUCCESS_MSG;
     }
 
 }

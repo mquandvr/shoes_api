@@ -2,6 +2,7 @@ package com.shoes.api.controller;
 
 import com.shoes.api.dto.CategoryDTO;
 import com.shoes.api.service.CategoryService;
+import com.shoes.api.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -23,10 +24,15 @@ public class CategoryController {
         return categoryService.save(dto);
     }
 
+    @RequestMapping(value = "/categories/category", method = RequestMethod.PUT)
+    public CategoryDTO update(@RequestBody CategoryDTO dto) {
+        return categoryService.save(dto);
+    }
+
     @RequestMapping(value = "/categories/category/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value = "id") Long id) {
         categoryService.delete(id);
-        return "success";
+        return Constants.SUCCESS_MSG;
     }
 
 }

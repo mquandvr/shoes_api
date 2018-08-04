@@ -21,7 +21,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     public List<SupplierDTO> findAll() {
         List<SupplierDTO> list = new ArrayList<>();
-        List<Supplier> suppliers = supplierDao.findAll();
+        List<Supplier> suppliers = supplierDao.findByDeleted(false);
         if (suppliers != null && !suppliers.isEmpty()) {
             suppliers.forEach(item -> {
                 list.add(supplierMapper.convertEntity2Dto(item));

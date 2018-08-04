@@ -18,8 +18,9 @@ public class SupplierMapperImpl implements SupplierMapper {
         if (entity == null) return null;
         SupplierDTO dto = new SupplierDTO();
         dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setCategoryId(entity.getCategory().getId());
+        dto.setName(entity.getName() != null ? entity.getName() : "");
+        dto.setCategoryId(entity.getCategory() != null
+                ? entity.getCategory().getId() : null);
         dto.setDeleted(entity.getDeleted());
         return dto;
     }
@@ -29,7 +30,7 @@ public class SupplierMapperImpl implements SupplierMapper {
         if (dto == null) return null;
         Supplier entity = new Supplier();
         entity.setId(dto.getId());
-        entity.setName(dto.getName());
+        entity.setName(dto.getName() != null ? dto.getName() : "");
         entity.setCategory(categoryDao.getOne(dto.getCategoryId()));
         entity.setDeleted(dto.getDeleted());
         return entity;

@@ -28,12 +28,13 @@ public class UserMapperImpl implements UserMapper {
     public User convertDto2Entity(UserDTO dto) {
         if (dto == null) return null;
         User user = new User();
+        user.setId(dto.getId());
         user.setActive(dto.getActive());
         user.setAddress(dto.getAddress());
         user.setBirthday(dto.getBirthday());
         user.setEmail(dto.getEmail());
-        user.setId(dto.getId());
-        user.setPassword(dto.getPassword());
+        if (user.getId() == null)
+            user.setPassword(dto.getPassword());
         user.setUsername(dto.getUsername());
         user.setRemarks(dto.getRemarks());
         user.setRole(dto.getRole());

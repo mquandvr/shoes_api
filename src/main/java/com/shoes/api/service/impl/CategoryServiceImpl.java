@@ -21,7 +21,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     public List<CategoryDTO> findAll() {
         List<CategoryDTO> list = new ArrayList<>();
-        List<Category> categories = categoryDao.findAll();
+        List<Category> categories = categoryDao.findByDeleted(false);
         if (categories != null && !categories.isEmpty()) {
             categories.forEach(item -> {
                 list.add(categoryMapper.convertEntity2Dto(item));
