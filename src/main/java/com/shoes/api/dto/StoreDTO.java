@@ -1,6 +1,5 @@
 package com.shoes.api.dto;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 public class StoreDTO implements Serializable {

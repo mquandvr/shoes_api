@@ -29,7 +29,7 @@ public class StoreController {
         return storeService.save(dto);
     }
 
-    @RequestMapping(value = "/stores/store/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/stores/store/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value = "id") Long id) {
         storeService.delete(id);
         return Constants.SUCCESS_MSG;

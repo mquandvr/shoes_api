@@ -23,7 +23,7 @@ public class CategoryController {
         return categoryService.save(dto);
     }
 
-    @RequestMapping(value = "/categories/category/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/categories/category/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value = "id") Long id) {
         categoryService.delete(id);
         return "success";
