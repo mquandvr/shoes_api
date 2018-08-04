@@ -1,9 +1,7 @@
 package com.shoes.api.controller;
 
 import com.shoes.api.dto.UserDTO;
-import com.shoes.api.model.User;
 import com.shoes.api.service.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

@@ -23,3 +23,9 @@ To run this repo, please follow these command :
 4. Accessing Resource With Token
 
     ![Accessing Resource with Token](img/oauth.png "Accessing Resource with Token")
+    
+5. API
+ * User
+    - Lấy full : GET /users/user
+    - Tạo : POST /users/user
+    - Xoá : DELETE /users/user/{id}

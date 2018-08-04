@@ -1,14 +1,22 @@
-package com.shoes.api.dto;
+package com.shoes.api.model;
 
-import com.shoes.api.model.Category;
-import java.io.Serializable;
+import javax.persistence.*;
 
-public class VendorDTO implements Serializable {
+@Entity
+@Table(name = "vendor")
+public class Supplier extends AbstractAuditingEntity {
 
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column
     private String name;
-
+    
+    @OneToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false, referencedColumnName = "id")
     private Category category;
 
 	public Long getId() {
@@ -35,12 +43,4 @@ public class VendorDTO implements Serializable {
 		this.category = category;
 	}
 
-	@Override
-	public String toString() {
-		return "VendorDTO{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", category=" + category +
-				'}';
-	}
 }
