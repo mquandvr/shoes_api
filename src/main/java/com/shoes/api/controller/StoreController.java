@@ -24,6 +24,11 @@ public class StoreController {
         return storeService.save(dto);
     }
 
+    @RequestMapping(value = "/stores/store", method = RequestMethod.PUT)
+    public StoreDTO update(@RequestBody StoreDTO dto) {
+        return storeService.save(dto);
+    }
+
     @RequestMapping(value = "/stores/store/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable(value = "id") Long id) {
         storeService.delete(id);

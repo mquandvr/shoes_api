@@ -21,7 +21,7 @@ public class StoreServiceImpl implements StoreService {
 
     public List<StoreDTO> findAll() {
         List<StoreDTO> list = new ArrayList<>();
-        List<Store> stores = storeDao.findAll();
+        List<Store> stores = storeDao.findByDeleted(false);
         if (stores != null && !stores.isEmpty()) {
             stores.forEach(item -> {
                 list.add(storeMapper.convertEntity2Dto(item));
