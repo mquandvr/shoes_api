@@ -13,6 +13,8 @@ public class StoreDTO implements Serializable {
 
     private String address;
 
+	private Boolean deleted;
+
 	public Long getId() {
 		return id;
 	}
@@ -37,12 +39,12 @@ public class StoreDTO implements Serializable {
 		this.address = address;
 	}
 
-	@Override
-	public String toString() {
-		return "StoreDTO{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", address='" + address + '\'' +
-				'}';
+	public Boolean getDeleted() {
+		return deleted;
 	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
 }

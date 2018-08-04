@@ -18,6 +18,9 @@ public class Store extends AbstractAuditingEntity {
     @Column(columnDefinition = "TEXT")
     private String address;
 
+	@Column(name = "is_deleted", columnDefinition="BOOLEAN DEFAULT false")
+	private Boolean deleted;
+
 	public Long getId() {
 		return id;
 	}
@@ -41,5 +44,12 @@ public class Store extends AbstractAuditingEntity {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-    
+
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
 }
