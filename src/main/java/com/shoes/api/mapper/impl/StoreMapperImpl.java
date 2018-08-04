@@ -13,9 +13,10 @@ public class StoreMapperImpl implements StoreMapper {
         if (entity == null) return null;
         StoreDTO storeDTO = new StoreDTO();
         storeDTO.setId(entity.getId());
-        storeDTO.setName(entity.getName());
-        storeDTO.setAddress(entity.getAddress());
-        storeDTO.setDeleted(entity.getDeleted());
+        storeDTO.setName(entity.getName() != null ? entity.getName() : "");
+        storeDTO.setAddress(entity.getAddress() != null ? entity.getAddress() : "");
+        storeDTO.setDeleted(entity.getDeleted() != null ? entity.getDeleted() : false);
+
         return storeDTO;
     }
 
@@ -24,9 +25,10 @@ public class StoreMapperImpl implements StoreMapper {
         if (dto == null) return null;
         Store entity = new Store();
         entity.setId(dto.getId());
-        entity.setName(dto.getName());
-        entity.setAddress(dto.getAddress());
-        entity.setDeleted(dto.getDeleted());
+        entity.setName(dto.getName() != null ? dto.getName() : "");
+        entity.setAddress(dto.getAddress() != null ? dto.getAddress() : "");
+        entity.setDeleted(dto.getDeleted() != null ? dto.getDeleted() : false);
+
         return entity;
     }
 

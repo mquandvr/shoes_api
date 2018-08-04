@@ -2,6 +2,7 @@ package com.shoes.api.controller;
 
 import com.shoes.api.dto.StoreDTO;
 import com.shoes.api.service.StoreService;
+import com.shoes.api.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -26,7 +27,7 @@ public class StoreController {
     @RequestMapping(value = "/stores/store/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable(value = "id") Long id) {
         storeService.delete(id);
-        return "success";
+        return Constants.SUCCESS_MSG;
     }
 
 }
