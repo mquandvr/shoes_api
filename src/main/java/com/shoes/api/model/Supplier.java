@@ -19,6 +19,9 @@ public class Supplier extends AbstractAuditingEntity {
     @JoinColumn(name = "category_id", insertable = false, updatable = false, referencedColumnName = "id")
     private Category category;
 
+	@Column(name = "is_deleted", columnDefinition="BOOLEAN DEFAULT false")
+	private Boolean deleted;
+
 	public Long getId() {
 		return id;
 	}
@@ -43,4 +46,11 @@ public class Supplier extends AbstractAuditingEntity {
 		this.category = category;
 	}
 
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
 }

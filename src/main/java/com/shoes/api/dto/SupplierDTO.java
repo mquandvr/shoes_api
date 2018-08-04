@@ -1,6 +1,5 @@
 package com.shoes.api.dto;
 
-import com.shoes.api.model.Category;
 import java.io.Serializable;
 
 public class SupplierDTO implements Serializable {
@@ -9,7 +8,9 @@ public class SupplierDTO implements Serializable {
 
 	private String name;
 
-	private Category category;
+	private Long categoryId;
+
+	private Boolean deleted;
 
 	public Long getId() {
 		return id;
@@ -27,12 +28,19 @@ public class SupplierDTO implements Serializable {
 		this.name = name;
 	}
 
-	public Category getCategory() {
-		return category;
+	public Long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
 	}
 
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
 }
