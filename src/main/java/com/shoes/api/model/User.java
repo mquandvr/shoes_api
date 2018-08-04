@@ -2,7 +2,6 @@ package com.shoes.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shoes.api.enumeration.Role;
-
 import java.util.Date;
 import javax.persistence.*;
 import org.springframework.data.annotation.CreatedBy;
@@ -17,6 +16,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+	@Column
+    private String fullName;
 
     @Column
     private String email;
@@ -43,8 +45,12 @@ public class User {
     
     @Column
     private Boolean active;
-    
-    @CreatedBy
+
+	@OneToOne
+	@JoinColumn(name = "store_id", insertable = false, updatable = false, referencedColumnName = "id")
+	private Store store;
+
+	@CreatedBy
 	@Column(name = "created_by", nullable = true, length = 30, updatable = true)
 	@JsonIgnore
 	private String createdBy;

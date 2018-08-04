@@ -10,6 +10,8 @@ public class UserDTO implements Serializable {
 
 	private long id;
 
+	private String fullName;
+
 	private String email;
 
 	private String username;
@@ -25,6 +27,8 @@ public class UserDTO implements Serializable {
 	private Role role;
 
 	private Boolean active;
+
+	private Long storeId;
 
 	public long getId() {
 		return id;
@@ -98,18 +102,19 @@ public class UserDTO implements Serializable {
 		this.active = active;
 	}
 
-	@Override
-	public String toString() {
-		return "UserDTO{" +
-				"id=" + id +
-				", email='" + email + '\'' +
-				", username='" + username + '\'' +
-				", password='" + password + '\'' +
-				", address='" + address + '\'' +
-				", birthday=" + birthday +
-				", remarks='" + remarks + '\'' +
-				", role=" + role +
-				", active=" + active +
-				'}';
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public Long getStoreId() {
+		return storeId;
+	}
+
+	public void setStoreId(Long storeId) {
+		this.storeId = storeId;
 	}
 }
