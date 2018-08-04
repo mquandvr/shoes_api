@@ -12,6 +12,10 @@ public class CategoryDTO implements Serializable {
 
     private String description;
 
+	private Boolean deleted;
+
+	private Long storeId;
+
 	public Long getId() {
 		return id;
 	}
@@ -36,12 +40,20 @@ public class CategoryDTO implements Serializable {
 		this.description = description;
 	}
 
-	@Override
-	public String toString() {
-		return "CategoryDTO{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", description='" + description + '\'' +
-				'}';
+	public Boolean getDeleted() {
+		return deleted;
 	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public Long getStoreId() {
+		return storeId;
+	}
+
+	public void setStoreId(Long storeId) {
+		this.storeId = storeId;
+	}
+
 }

@@ -18,6 +18,12 @@ public class Category extends AbstractAuditingEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+	@Column(name = "is_deleted", columnDefinition="BOOLEAN DEFAULT false")
+    private Boolean deleted;
+
+	@Column
+	private Long storeId;
+
 	public Long getId() {
 		return id;
 	}
@@ -41,5 +47,21 @@ public class Category extends AbstractAuditingEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public Long getStoreId() {
+		return storeId;
+	}
+
+	public void setStoreId(Long storeId) {
+		this.storeId = storeId;
+	}
+
 }
