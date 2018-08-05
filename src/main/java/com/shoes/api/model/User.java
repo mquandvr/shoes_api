@@ -29,6 +29,9 @@ public class User {
     @Column
     @JsonIgnore
     private String password;
+
+	@Column
+	private String mobilePhone;
     
     @Column
     private String address;
@@ -173,5 +176,28 @@ public class User {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
 }

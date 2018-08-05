@@ -1,12 +1,23 @@
 package com.shoes.api.mapper.impl;
 
+import com.shoes.api.dao.UserDao;
 import com.shoes.api.dto.UserDTO;
+import com.shoes.api.enumeration.Role;
 import com.shoes.api.mapper.UserMapper;
 import com.shoes.api.model.User;
+import com.shoes.api.utils.Constants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapperImpl implements UserMapper {
+
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @Override
     public UserDTO convertEntity2Dto(User user) {
@@ -20,24 +31,34 @@ public class UserMapperImpl implements UserMapper {
         dto.setPassword(user.getPassword());
         dto.setUsername(user.getUsername());
         dto.setRemarks(user.getRemarks());
-        dto.setRole(user.getRole());
+        dto.setRole(user.getRole() != null ? user.getRole().name() : Role.NV_BAN_HANG.name());
+        dto.setMobilePhone(user.getMobilePhone() != null ? user.getMobilePhone() : "");
         return dto;
     }
 
     @Override
     public User convertDto2Entity(UserDTO dto) {
         if (dto == null) return null;
+
         User user = new User();
+        if (dto.getId() != null) {
+            user = userDao.getOne(dto.getId());
+        }
+
         user.setId(dto.getId());
         user.setActive(dto.getActive());
         user.setAddress(dto.getAddress());
         user.setBirthday(dto.getBirthday());
         user.setEmail(dto.getEmail());
-        if (user.getId() == null)
-            user.setPassword(dto.getPassword());
+
+        if (user.getId() == null) {
+            user.setPassword(encoder.encode(dto.getPassword() != null ? dto.getPassword() :Constants.PASS_DEFAULT));
+        }
+
         user.setUsername(dto.getUsername());
         user.setRemarks(dto.getRemarks());
-        user.setRole(dto.getRole());
+        user.setRole(dto.getRole() != null ? Role.valueOf(dto.getRole()) : Role.NV_BAN_HANG);
+        user.setMobilePhone(dto.getMobilePhone() != null ? dto.getMobilePhone() : "");
         return user;
     }
 

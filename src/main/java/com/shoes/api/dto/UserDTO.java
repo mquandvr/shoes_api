@@ -8,7 +8,7 @@ public class UserDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id;
+	private Long id;
 
 	private String fullName;
 
@@ -24,17 +24,19 @@ public class UserDTO implements Serializable {
 
 	private String remarks;
 
-	private Role role;
+	private String role;
 
 	private Boolean active;
 
 	private Long storeId;
 
-	public long getId() {
+	private String mobilePhone;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -86,11 +88,11 @@ public class UserDTO implements Serializable {
 		this.remarks = remarks;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
@@ -116,5 +118,13 @@ public class UserDTO implements Serializable {
 
 	public void setStoreId(Long storeId) {
 		this.storeId = storeId;
+	}
+
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
 	}
 }

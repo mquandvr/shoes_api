@@ -1,10 +1,13 @@
 package com.shoes.api.controller;
 
 import com.shoes.api.dto.UserDTO;
+import com.shoes.api.enumeration.Role;
 import com.shoes.api.service.UserService;
 import com.shoes.api.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -33,6 +36,16 @@ public class UserController {
     public String delete(@PathVariable(value = "id") Long id) {
         userService.delete(id);
         return Constants.SUCCESS_MSG;
+    }
+
+    @RequestMapping(value = "/users/roles", method = RequestMethod.GET)
+    public List<String> getRoles() {
+        List<String> list = new ArrayList<>();
+        Role[] roles =  Role.values();
+        for (Role role : roles) {
+            list.add(role.name());
+        }
+        return list;
     }
 
 }
