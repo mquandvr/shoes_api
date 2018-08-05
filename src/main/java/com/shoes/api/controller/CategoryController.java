@@ -1,6 +1,7 @@
 package com.shoes.api.controller;
 
 import com.shoes.api.dto.CategoryDTO;
+import com.shoes.api.dto.UserDTO;
 import com.shoes.api.service.CategoryService;
 import com.shoes.api.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class CategoryController {
     public String delete(@PathVariable(value = "id") Long id) {
         categoryService.delete(id);
         return Constants.SUCCESS_MSG;
+    }
+
+    @RequestMapping(value = "/categories/category/{id}", method = RequestMethod.GET)
+    public CategoryDTO findById(@PathVariable(value = "id") Long id) {
+        return categoryService.findById(id);
     }
 
 }

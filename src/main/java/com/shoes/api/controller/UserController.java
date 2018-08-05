@@ -22,6 +22,11 @@ public class UserController {
         return userService.findAll();
     }
 
+    @RequestMapping(value = "/users/user/{id}", method = RequestMethod.GET)
+    public UserDTO findById(@PathVariable(value = "id") Long id) {
+        return userService.findById(id);
+    }
+
     @RequestMapping(value = "/users/user", method = RequestMethod.POST)
     public UserDTO create(@RequestBody UserDTO dto) {
         return userService.save(dto);

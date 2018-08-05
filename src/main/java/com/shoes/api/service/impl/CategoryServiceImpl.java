@@ -45,5 +45,10 @@ public class CategoryServiceImpl implements CategoryService {
         user = categoryDao.save(user);
         return categoryMapper.convertEntity2Dto(user);
     }
-    
+
+    @Override
+    public CategoryDTO findById(Long id) {
+        Category category = categoryDao.getOne(id);
+        return categoryMapper.convertEntity2Dto(category);
+    }
 }

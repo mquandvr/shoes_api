@@ -10,5 +10,7 @@ public interface CategoryService {
     List<CategoryDTO> findAll();
 
     void delete(Long id);
+
+    CategoryDTO findById(Long id);
     
 }

@@ -62,5 +62,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         user = userDao.save(user);
         return userMapper.convertEntity2Dto(user);
     }
-    
+
+    @Override
+    public UserDTO findById(Long id) {
+        User user = userDao.getOne(id);
+        return userMapper.convertEntity2Dto(user);
+    }
 }
