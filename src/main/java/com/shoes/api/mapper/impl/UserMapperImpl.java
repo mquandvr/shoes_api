@@ -1,5 +1,6 @@
 package com.shoes.api.mapper.impl;
 
+import com.shoes.api.dao.StoreDao;
 import com.shoes.api.dao.UserDao;
 import com.shoes.api.dto.UserDTO;
 import com.shoes.api.enumeration.Role;
@@ -19,6 +20,9 @@ public class UserMapperImpl implements UserMapper {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
+    @Autowired
+    private StoreDao storeDao;
+
     @Override
     public UserDTO convertEntity2Dto(User user) {
         if (user == null) return null;
@@ -33,6 +37,8 @@ public class UserMapperImpl implements UserMapper {
         dto.setRemarks(user.getRemarks());
         dto.setRole(user.getRole() != null ? user.getRole().name() : Role.NV_BAN_HANG.name());
         dto.setMobilePhone(user.getMobilePhone() != null ? user.getMobilePhone() : "");
+        dto.setFullName(user.getFullName() != null ? user.getFullName() : "");
+        dto.setStoreId(user.getStore() != null ? user.getStore().getId() : null);
         return dto;
     }
 
@@ -59,6 +65,8 @@ public class UserMapperImpl implements UserMapper {
         user.setRemarks(dto.getRemarks());
         user.setRole(dto.getRole() != null ? Role.valueOf(dto.getRole()) : Role.NV_BAN_HANG);
         user.setMobilePhone(dto.getMobilePhone() != null ? dto.getMobilePhone() : "");
+        user.setFullName(dto.getFullName() != null ? dto.getFullName() : "");
+        user.setStore(dto.getStoreId() != null ? storeDao.getOne(dto.getStoreId()) : null);
         return user;
     }
 
